@@ -4,13 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collection;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Frame {
-    Integer index;
-    String shot1;
-    String shot2;
-    Integer score;
-    Boolean complete;
+public class PlayerGame {
+    String playerName;
+    Collection<Frame> frames;
 }
