@@ -1,13 +1,14 @@
 package bowling.exception;
 
+/**
+ * Bussiness bowling exception class.
+ */
 public class BowlingException extends RuntimeException {
-    /**
-     * Serial.
-     */
+
     private static final long serialVersionUID = 1L;
 
     /**
-     * Cons.
+     * Constr.
      * @param message message
      */
     public BowlingException(String message){
@@ -15,7 +16,7 @@ public class BowlingException extends RuntimeException {
     }
 
     /**
-     * Cons2.
+     * Constr2.
      * @param message message
      * @param error error
      */
