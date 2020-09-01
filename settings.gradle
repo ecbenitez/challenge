@@ -1,0 +1,5 @@
+rootProject.name = 'bowling-challenge'
+include 'bowling-client'
+include 'bowling-core'
+include 'bowling-console'
+

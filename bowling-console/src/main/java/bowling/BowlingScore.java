@@ -11,8 +11,6 @@ import java.util.Scanner;
 
 public class BowlingScore {
 
-    private static IBowlingService bowlingService = new BowlingService();
-
     public static void main(String[] args) {
 
         System.out.println("Hello to java challenge");
@@ -36,6 +34,7 @@ public class BowlingScore {
             System.out.println("Invalid File or Input");
             bowlingScore();
         }else{
+            IBowlingService bowlingService = new BowlingService();
             Map<String, List<String>> gamersShots = bowlingService.readFile(textFile);
             List<PlayerGame> playerGames = bowlingService.processGame(gamersShots);
             ShowDataAsTable.printTable(playerGames);
