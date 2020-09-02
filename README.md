@@ -13,3 +13,6 @@ Navigate to jar file, open console and excute command
 `java -jar bowling-console-all.jar`
 
 Follow instructions and enjoy.
+
+
+PD: You can test the output with the example located in the root file of the project `bowlingR.txt`
