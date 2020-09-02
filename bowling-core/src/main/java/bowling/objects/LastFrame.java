@@ -44,7 +44,7 @@ public class LastFrame extends Frame{
      * {@inheritDoc}
      */
     @Override
-    public String pinfallsToString(){
+    public String pinfallsToString(Boolean pureStrings){
         String pinfalls;
         if(shot1.equals(STRIKE)){
             pinfalls = "X";

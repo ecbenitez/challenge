@@ -41,15 +41,15 @@ public class BowlingService implements IBowlingService{
                 }
             }
             sc.close();
-        } catch (FileNotFoundException | BowlingException e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            throw new BowlingException("NO_FILE", e);
         }
         return gamersShots;
     }
 
     /**
      * Parse the file lines to get players shots.
-     * @param line file line
+     * @param line file line.
      * @return map with all the players shots.
      */
     private static Map.Entry<String, String> parseLineContent(String line) {
@@ -107,7 +107,7 @@ public class BowlingService implements IBowlingService{
         Integer frameIndex = 0;
         for(String shot: playerShots){
             if(frameIndex > 9){
-                throw new BowlingException("GAME_INVALID");
+                throw new BowlingException("GAME_INVALID_FRAMES");
             }
 
             Boolean strike = !shot.equals(FOUL) && Integer.parseInt(shot) == STRIKE;
@@ -148,7 +148,7 @@ public class BowlingService implements IBowlingService{
                     shot2Value = ScoreValueUtil.getShotValuePreventFoul(currentFrame.getShot2());
                     Integer shot3Value = ScoreValueUtil.getShotValuePreventFoul(shot);
                     if(!shot1Value.equals(STRIKE) && shot1Value + shot2Value < SPARESUM || shot1Value.equals(STRIKE) && !shot2Value.equals(STRIKE) && shot2Value + shot3Value > SPARESUM){
-                        throw new BowlingException("GAME_INVALID");
+                        throw new BowlingException("GAME_INVALID_LAST_FRAME");
                     }
                     ((LastFrame)currentFrame).setShot3(shot);
                     currentFrame.setComplete(Boolean.TRUE);
@@ -156,7 +156,7 @@ public class BowlingService implements IBowlingService{
                 }
             }
             if(shot1Value + shot2Value > SPARESUM && frameIndex < 9 || frameIndex.equals(9) && !shot1Value.equals(STRIKE) && shot1Value + shot2Value > SPARESUM){
-                throw new BowlingException("GAME_INVALID");
+                throw new BowlingException("GAME_INVALID_SCORES");
             }
         }
         return frameList;
@@ -164,7 +164,7 @@ public class BowlingService implements IBowlingService{
 
     /**
      * Calc all players game score.
-     * @param playerGames players game
+     * @param playerGames players game.
      */
     private void calcGameScore(List<PlayerGame> playerGames){
         for(PlayerGame playerGame: playerGames){

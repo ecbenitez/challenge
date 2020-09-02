@@ -13,7 +13,7 @@ public class BowlingScore {
 
     public static void main(String[] args) {
 
-        System.out.println("Hello to java challenge");
+        System.out.println("Welcome to java challenge!!!");
         bowlingScore();
     }
 
@@ -32,13 +32,13 @@ public class BowlingScore {
         File textFile = new File("F:/bowlingR.txt");
         if(!textFile.exists() || !textFile.getName().contains(".txt")){
             System.out.println("Invalid File or Input");
-            bowlingScore();
         }else{
             IBowlingService bowlingService = new BowlingService();
             Map<String, List<String>> gamersShots = bowlingService.readFile(textFile);
             List<PlayerGame> playerGames = bowlingService.processGame(gamersShots);
-            ShowDataAsTable.printTable(playerGames);
-            bowlingScore();
+            //ShowDataAsTable.printTable(playerGames);
+            ShowDataAsTable.printStringsAsTable(playerGames);
         }
+        bowlingScore();
     }
 }

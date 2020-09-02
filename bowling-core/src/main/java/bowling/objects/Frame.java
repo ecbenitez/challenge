@@ -43,14 +43,14 @@ public class Frame {
      * Build shots string.
      * @return shots string.
      */
-    public String pinfallsToString(){
+    public String pinfallsToString(Boolean pureStrings){
         String pinfalls;
         if(shot1.equals(STRIKE)){
-            pinfalls = "    X";
+            pinfalls = pureStrings?" X":"    X";
         }else if(baseFrameScore().equals(SPARE)){
-            pinfalls = shot1.concat("  ").concat(SPARE);
+            pinfalls = shot1.concat(pureStrings?" ":"  ").concat(SPARE);
         }else{
-            pinfalls = shot1.concat("  ").concat(shot2);
+            pinfalls = shot1.concat(pureStrings?" ":"  ").concat(shot2);
         }
         return  pinfalls;
     }
